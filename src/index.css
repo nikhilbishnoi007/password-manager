@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@layer components{
+  .mycontainer{
+    @apply container px-40 py-16 mx-auto h-full;
+  }
+}
+ /* body {
+  overflow: hidden; 
+}  */
+body {
+  overflow: scroll;
+  scrollbar-width: none; 
+  /* -ms-overflow-style: none;  */
+}
+
+body::-webkit-scrollbar {
+  display: none; 
+}
