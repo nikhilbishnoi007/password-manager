@@ -9,7 +9,7 @@ const Manager = () => {
     const [form, setform] = useState({ site: "", username: "", password: "" })
     const [passwordsArray, setPasswordsArray] = useState([])
     const getPasswords= async ()=>{
-        let req= await fetch("http://localhost:3000/")
+        let req= await fetch("https://password-manager-backend-qi30.onrender.com")
         let passwords = await req.json()
         console.log(passwords)
          setPasswordsArray(passwords)
@@ -23,11 +23,11 @@ const Manager = () => {
 
     const SavePassword = async () => {
         if(form.site.length >3 && form.username.length >3 && form.password.length>3 ){
-            await fetch("http://localhost:3000/",{method:"DELETE",headers:{"Content-Type":"application/json"},
+            await fetch("https://password-manager-backend-qi30.onrender.com",{method:"DELETE",headers:{"Content-Type":"application/json"},
                 body:JSON.stringify({id:form.id})})
      setPasswordsArray([...passwordsArray ,{...form ,id:uuidv4()}])
     
-    await fetch("http://localhost:3000/",{method:"POST",headers:{"Content-Type":"application/json"},
+    await fetch("https://password-manager-backend-qi30.onrender.com",{method:"POST",headers:{"Content-Type":"application/json"},
     body:JSON.stringify({...form,id:uuidv4()})})
      setform({ site: "", username: "", password: "" })
      toast('Password Saved', {
@@ -74,7 +74,7 @@ const Manager = () => {
         if(a){
         setPasswordsArray(passwordsArray.filter(item=>item.id!==id))
         // localStorage.setItem("passwords",JSON.stringify(passwordsArray.filter(item=>item.id!==id)))
-        let res= await fetch("http://localhost:3000/",{method:"DELETE",headers:{"Content-Type":"application/json"},
+        let res= await fetch("https://password-manager-backend-qi30.onrender.com",{method:"DELETE",headers:{"Content-Type":"application/json"},
             body:JSON.stringify({id})})
     }
     toast('Password Deleted Successfully', {
