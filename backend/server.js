@@ -5,12 +5,12 @@ const dotenv = require('dotenv');
 dotenv.config();
 const cors=require('cors')
 
-const url = 'mongodb://localhost:27017/';
+const url = process.env.MONGO_URI;
 const client = new MongoClient(url);
 
 const dbName = 'PassBox';
 const app = express();
-const port =  3000;
+const port =  process.env.PORT ||3000;
 const hostname = '127.0.0.1';
 app.use(bodyparser.json());
 app.use(cors())
@@ -40,5 +40,5 @@ app.delete('/', async (req, res) => {
 
 
 app.listen(port, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
+    console.log(`Server running `);
 });
