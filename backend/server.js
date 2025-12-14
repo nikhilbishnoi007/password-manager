@@ -10,7 +10,7 @@ const client = new MongoClient(url);
 
 const dbName = 'PassBox';
 const app = express();
-const port = process.env.PORT || 3000;
+const port =  3000;
 const hostname = '127.0.0.1';
 app.use(bodyparser.json());
 app.use(cors())
